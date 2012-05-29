@@ -1,12 +1,7 @@
 motion-dtrace
 =============
 
-Proof of concept to use dtrace on rubymotion.
-
-Demo
-----
-
-<iframe width="560" height="315" src="http://www.youtube.com/embed/w-5HySCUUkI" frameborder="0" allowfullscreen></iframe>
+Proof of concept to use dtrace on rubymotion. Check the demo at [You Tube](https://github.com/siuying/motion-dtrace).
 
 Installation
 ------------
