@@ -11,11 +11,13 @@ BEGIN
 }
 
 macruby$target:::method-entry
+/copyinstr(arg0) != "TopLevel"/
 {
     self->starttime = walltimestamp / 1000;
 }
 
 macruby$target:::method-return
+/copyinstr(arg0) != "TopLevel"/
 {
     printf("%20s:%-5d %10s#%-30s %10d\n", copyinstr(arg2), arg3,
             copyinstr(arg0), copyinstr(arg1),

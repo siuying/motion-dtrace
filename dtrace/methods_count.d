@@ -9,6 +9,7 @@ BEGIN
 }
 
 macruby$target:::method-entry
+/copyinstr(arg0) != "TopLevel"/
 {
 /*    printf("%30s:%-5d %s#%s\n", copyinstr(arg2), arg3, 
 	    copyinstr(arg0), copyinstr(arg1));
