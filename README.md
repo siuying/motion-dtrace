@@ -13,30 +13,50 @@ gem install motion-dtrace
 Usage
 -----
 
-1. Edit the Rakefile of your RubyMotion project and add the following require line.
-
+Edit the Rakefile of your RubyMotion project and add the following require line.
 ```
 require 'rubygems'
 require 'motion-dtrace'
 ```
 
-2. Start simulator process:
-
+Start simulator process:
 ```
 rake
 ```
 
-3. On another terminal, start dtrace:
-
+On another terminal, start dtrace:
 ```
 rake dtrace
 ```
 
-You may specify your own dtrace file via: 
+When you terminate the app, you get a trace similar to following:
 
+```
+                         CLASS#METHOD                          TOTAL TIME µsec
+--------------------------------------------------------------------------------
+                       CGPoint#y=:                             3
+                        String#nil?                            3
+                         Array#last                            4
+                        CGRect#origin                          4
+                Evernote::Note#title                           4
+                          Hash#empty?                          4
+                          ........
+                         Class#all:                            19867
+                       UIImage#thumbnail                       24226
+                  DTWebArchive#thumbnail                       24415
+                      ClipItem#thumbnail                       24451
+                    __NSArrayM#each                            24717
+          ClipperTableViewCell#item=:                          25143
+```
+
+Extra
+-----
+
+You may specify your own dtrace file via: 
 ```
 rake dtrace DTRACE=/Users/siuying/Documents/workspace/motion/motion-dtrace/dtrace/methods_duration.d
 ```
+
 
 TODO
 ----
