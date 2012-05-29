@@ -3,6 +3,11 @@ motion-dtrace
 
 Proof of concept to use dtrace on rubymotion.
 
+Demo
+----
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/w-5HySCUUkI" frameborder="0" allowfullscreen></iframe>
+
 Installation
 ------------
 
@@ -12,7 +17,6 @@ gem install motion-dtrace
 
 Usage
 -----
-
 
 1. Edit the Rakefile of your RubyMotion project and add the following require line.
 
