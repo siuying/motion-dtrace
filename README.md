@@ -33,4 +33,21 @@ rake
 rake dtrace
 ```
 
+You may specify your own dtrace file via: 
 
+```
+rake dtrace DTRACE=/Users/siuying/Documents/workspace/motion/motion-dtrace/dtrace/methods_duration.d
+```
+
+TODO
+----
+
+Currently this gem is just a hack to simplify command lines. 
+
+We shall investigate can we do real integration with project.
+
+Credit
+------
+
+- [MacRuby DTrace examples](https://github.com/MacRuby/MacRuby/tree/master/sample-macruby/DTrace)
+- [Using the DTrace](http://watson1978.github.com/MacRuby-DoJo/blog/2012/04/15/dtrace/)
