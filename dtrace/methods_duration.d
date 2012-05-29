@@ -1,6 +1,14 @@
 #!/usr/sbin/dtrace -s
-
+/* https://raw.github.com/MacRuby/MacRuby/master/sample-macruby/DTrace/methods_duration.d */
 #pragma D option quiet
+
+BEGIN
+{
+    printf("Target pid: %d\n\n", $target);
+    printf("%20s %-5s %10s %-30s %10s\n", "FILE", "LINE", "CLASS", "METHOD",
+	    "DURATION");
+    printf("--------------------------------------------------------------------------------\n");
+}
 
 macruby$target:::method-entry
 {
@@ -9,13 +17,7 @@ macruby$target:::method-entry
 
 macruby$target:::method-return
 {
-    @invoked_time[copyinstr(arg0), copyinstr(arg1)] = sum((walltimestamp / 1000) - self->starttime);
-}
-
-END
-{
-    printf("\n");
-    printf("%30s#%-30s  %s\n", "CLASS", "METHOD", "TOTAL TIME µsec");
-    printf("--------------------------------------------------------------------------------\n");
-    printa("%30s#%-30s  %@d\n", @invoked_time);
+    printf("%20s:%-5d %10s#%-30s %10d\n", copyinstr(arg2), arg3,
+            copyinstr(arg0), copyinstr(arg1),
+	    (walltimestamp / 1000) - self->starttime);
 }
