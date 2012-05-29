@@ -4,5 +4,12 @@ task :dtrace do
   trace_pid  = `ps ax | grep -P 'iPhone Simulator/[0-9\.]+/Applications/[^/]+/[^/]+\.app' | awk '{print $1}'`
   command    = "sudo dtrace -qs #{trace_file} -p #{trace_pid}"
   puts "#{command}"
-  exec command
+  pid = fork { exec command }
+
+  Signal.trap("HUP") do
+    Process.kill("HUP", pid)
+    Process.wait(pid)
+    exit
+  end
+  Process.wait(pid)
 end
